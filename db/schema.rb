@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20161102162356) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -32,9 +29,9 @@ ActiveRecord::Schema.define(version: 20161102162356) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "transactions", ["buyer_id"], name: "index_transactions_on_buyer_id", using: :btree
-  add_index "transactions", ["product_id"], name: "index_transactions_on_product_id", using: :btree
-  add_index "transactions", ["seller_id"], name: "index_transactions_on_seller_id", using: :btree
+  add_index "transactions", ["buyer_id"], name: "index_transactions_on_buyer_id"
+  add_index "transactions", ["product_id"], name: "index_transactions_on_product_id"
+  add_index "transactions", ["seller_id"], name: "index_transactions_on_seller_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -44,7 +41,4 @@ ActiveRecord::Schema.define(version: 20161102162356) do
     t.string   "password_digest"
   end
 
-  add_foreign_key "transactions", "products"
-  add_foreign_key "transactions", "users", column: "buyer_id"
-  add_foreign_key "transactions", "users", column: "seller_id"
 end
