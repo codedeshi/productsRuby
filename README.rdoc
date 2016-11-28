@@ -1,28 +1,9 @@
-== README
+# Sell Products
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Showcasing use of 
+* Ruby on Rails
+* Custom User Login/Registration
+* Authentication/Validation for Privileged Actions
+* Advanced Active Record Queries
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+From wireframe to deployed in under 3.5 hours. This website allows user to register or login (with validations performed through the model) and create groups which other users can join. A user can perform CRUD operations with the groups and the page is made using restful routes.
