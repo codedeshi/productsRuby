@@ -6,4 +6,4 @@
 * Authentication/Validation for Privileged Actions
 * Advanced Active Record Queries
 
-From wireframe to deployed in under 3.5 hours. This website allows user to register or login (with validations performed through the model) and create groups which other users can join. A user can perform CRUD operations with the groups and the page is made using restful routes.
+Website where users can add products and list a price. Other users can view the listings and buy these products (simulated). The transaction table tracks all transactions. User dashboard shows all products and transactions of the user in three categories avaialble, sold by the user and purchased by the user.
