@@ -1,0 +1,82 @@
+<div id="container">
+<div id="header">		
+	<h1>Hi <%= @user.name %></h1>
+	<%= link_to 'Log Out', session_path("user_id"), :method => :delete %>
+	<a href="<%= products_path %>">Go to All products</a>
+
+</div>
+	
+	<form action='<%= products_path %>' method='post' class="box">
+		<h3>Sell Product</h3>
+		<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+		<label>Name : <input type="text" name="product[name]"></label>
+		<label>Amount : <input <input type="number" step="0.01" name="product[amount]"></label>	
+		<label><input type='submit' value='Sell' class='green'></label>
+	</form>
+	<div id="tables">
+		<h3>Your products that are not sold yet</h3>
+		<table class='table'>
+			<tr>
+				<th>Product </th>
+				<th>Date Poted</th>
+				<th>Amount</th>
+				<th>Action</th>
+			</tr>
+
+			<% if @userProducts%>
+				<% @userProducts.each do |product|%>
+				<tr>
+					<td><%= product.name %></td>
+					<td><%= product.created_at.strftime('%B %d, %Y')   %></td>
+					<td><%= product.amount %></td>
+					<td><%= link_to 'Remove', product_path(product.id), :method => :delete %></td>
+				<% end %>
+			<% end %>
+			</tr>
+		</table>
+
+		<h3>Sales</h3>
+		<table class='table'>
+			<tr>
+				<th>Product </th>
+				<th>Date Poted</th>
+				<th>Buyer</th>
+				<th>Amount</th>
+			</tr>
+			
+			<% if @sales%>
+				<% @sales.each do |transaction|%>
+				<tr>
+					<td><%= transaction.product.name %></td>
+					<td><%= transaction.created_at.strftime('%B %d, %Y')   %></td>
+					<td><%= transaction.buyer.name %></td>
+					<td><%= transaction.product.amount %></td>
+				<% end %>
+			<% end %>
+			</tr>
+		</table>
+
+
+		<h3>Purchases</h3>
+		<table class='table'>
+			<tr>
+				<th>Product </th>
+				<th>Date Posted</th>
+				<th>Seller</th>
+				<th>Amount</th>
+			</tr>
+			
+			<% if @purchases%>
+				<% @purchases.each do |transaction|%>
+				<tr>
+					<td><%= transaction.product.name %></td>
+					<td><%= transaction.created_at.strftime('%B %d, %Y')   %></td>
+					<td><%= transaction.seller.name %></td>
+					<td><%= transaction.product.amount %></td>
+				<% end %>
+			<% end %>
+			</tr>
+		</table>
+	</div>
+</div>
+

@@ -3,7 +3,11 @@ class ProductsController < ApplicationController
 	def index
 		if session[:user_id]
 			@user = User.find(session[:user_id])
-			@products = Product.where('id not in (?)',Transaction.pluck(:product_id))
+			if Transaction.pluck(:product_id) == []
+					@products = Product.all
+			else
+				@products = Product.where('id not in (?)',Transaction.pluck(:product_id))
+			end
 		end
 	end
 

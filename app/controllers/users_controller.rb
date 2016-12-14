@@ -14,7 +14,11 @@ class UsersController < ApplicationController
 	def show
 		if session[:user_id]
 			@user = User.find(params[:id])
-			@userProducts = @user.products.where('id not in (?)',Transaction.pluck(:product_id))
+			if Transaction.pluck(:product_id) == []
+					@userProducts = @user.products.all
+			else
+				@userProducts = @user.products.where('id not in (?)',Transaction.pluck(:product_id))
+			end
 			@sales = @user.sales
 			@purchases = @user.purchases
 			render 'dashboard'
